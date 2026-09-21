@@ -1,0 +1,35 @@
+@baseUrl = http://127.0.0.1:3000
+@productId = 00000000-0000-4000-8000-000000000000
+
+### Listado paginado
+GET {{baseUrl}}/api/products?page=1&per_page=10
+Accept: application/json
+
+### Crear y copiar data.id a productId
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+Accept: application/json
+
+{"name":"Teclado","description":"USB","price_cents":2599,"stock":3}
+
+### Consultar
+GET {{baseUrl}}/api/products/{{productId}}
+Accept: application/json
+
+### Actualizar parcialmente
+PATCH {{baseUrl}}/api/products/{{productId}}
+Content-Type: application/json
+Accept: application/json
+
+{"stock":0,"description":null}
+
+### Eliminar
+DELETE {{baseUrl}}/api/products/{{productId}}
+Accept: application/json
+
+### Ejemplo de validación (422)
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+Accept: application/json
+
+{"name":"","price_cents":-1}
